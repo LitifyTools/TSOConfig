@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>litify_pm__Matter__c.litify_pm__Case_Type__c</field>
+    </columns>
+    <columns>
+        <field>litify_pm__Matter__c.litify_pm__Client__c</field>
+    </columns>
+    <columns>
+        <field>litify_pm__Matter__c.litify_pm__Status__c</field>
+    </columns>
+    <columns>
+        <field>litify_pm__Matter__c.litify_pm__Open_Date__c</field>
+    </columns>
+    <columns>
+        <field>litify_pm__Matter__c.litify_pm__Close_Date__c</field>
+    </columns>
+    <columns>
+        <field>litify_pm__Matter__c.litify_pm__Statute_Of_Limitations__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>litify_pm__Matter__c.litify_pm__Total_Matter_Value__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>litify_pm__Matter__c.litify_pm__Total_Hours__c</field>
+    </columns>
+    <description>All of my matters (my caseload) - with key matter information.</description>
+    <format>Tabular</format>
+    <name>My Matters/Caseload</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$litify_pm__Matter__c</reportType>
+    <scope>user</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>litify_pm__Matter__c.litify_pm__Closed_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

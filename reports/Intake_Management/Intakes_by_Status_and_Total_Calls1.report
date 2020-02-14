@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_13661388</developerName>
+        <masterLabel>Total Calls</masterLabel>
+        <nullTreatment>z</nullTreatment>
+        <sourceColumnName>litify_pm__Intake__c.litify_pm__Total_Calls__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>0</to>
+            </sourceValues>
+            <value>No Calls</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>0</from>
+                <to>1</to>
+            </sourceValues>
+            <value>1 Call</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>1</from>
+                <to>3</to>
+            </sourceValues>
+            <value>2-3 Calls</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>3</from>
+                <to>5</to>
+            </sourceValues>
+            <value>4-5 Calls</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>5</from>
+                <to>10</to>
+            </sourceValues>
+            <value>6-10 Calls</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>10</from>
+            </sourceValues>
+            <value>11+ Calls</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>HorizontalBarGrouped</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>BucketField_13661388</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>litify_pm__Intake__c.litify_pm__Status__c</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>true</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>litify_pm__Intake__c.litify_pm__Display_Name__c</field>
+    </columns>
+    <columns>
+        <field>litify_pm__Intake__c.litify_pm__Client__c</field>
+    </columns>
+    <columns>
+        <field>litify_pm__Intake__c.litify_pm__Case_Type__c</field>
+    </columns>
+    <columns>
+        <field>litify_pm__Intake__c.litify_pm__Total_Calls__c</field>
+    </columns>
+    <columns>
+        <field>litify_pm__Intake__c.litify_pm__Open_Date__c</field>
+    </columns>
+    <columns>
+        <field>litify_pm__Intake__c.litify_pm__Statute_of_Limitations_Date__c</field>
+    </columns>
+    <description>What is the status of Intakes, grouped by number of Total Calls, from the past 2 fiscal years?</description>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>litify_pm__Intake__c.litify_pm__Status__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_13661388</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Intakes by Status and # Calls (2 FY)</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$litify_pm__Intake__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_PREVCURFY</interval>
+    </timeFrameFilter>
+</Report>

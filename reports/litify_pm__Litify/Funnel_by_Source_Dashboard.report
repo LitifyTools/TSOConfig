@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>litify_pm__Intake__c.Total_Converted_Leads__c:SUM /RowCount</calculatedFormula>
+        <datatype>percent</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Conversion %</masterLabel>
+        <scale>1</scale>
+    </aggregates>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_53923233</developerName>
+        <masterLabel>Practice Area</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>litify_pm__Intake__c.litify_pm__Case_Type__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Civil Rights</sourceValue>
+            </sourceValues>
+            <value>Civil Rights</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Automobile Accident</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Personal Injury</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Animal Incident</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Medical Malpractice</sourceValue>
+            </sourceValues>
+            <value>Personal Injury</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Workers Compensation</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Workers Compensation Federal</sourceValue>
+            </sourceValues>
+            <value>Workers Comp</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Disability Discrimination</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employment Discrimination</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Labor</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Labor - PA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Wage &amp; Hour</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Unemployment</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Wrongful Termination</sourceValue>
+            </sourceValues>
+            <value>Labor/Employment/Wage</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Social Security</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ADA - American Disability Act</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Long-Term Disability</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Long Term/Short Term Disability</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Veteran Disability</sourceValue>
+            </sourceValues>
+            <value>Social Security/Disability/Veterans</value>
+        </values>
+    </buckets>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>litify_pm__Intake__c.Total_Questionnaires__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>litify_pm__Intake__c.Total_Under_Review__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>litify_pm__Intake__c.Total_Retainer_Sent__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>litify_pm__Intake__c.Total_Converted_Leads__c</field>
+    </columns>
+    <description>What is the Status of all Intakes, from all time?</description>
+    <filter>
+        <criteriaItems>
+            <column>CUST_CREATED_DATE</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>LAST_90_DAYS</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>litify_pm__Intake__c.litify_pm__Source__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Funnel by Source - Dashboard</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$litify_pm__Intake__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

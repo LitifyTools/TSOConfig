@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>SHORT_NAME</field>
+    </columns>
+    <columns>
+        <field>LONG_NAME</field>
+    </columns>
+    <columns>
+        <field>CREATED</field>
+    </columns>
+    <columns>
+        <field>FOLDER</field>
+    </columns>
+    <columns>
+        <field>CREATEDDATE</field>
+    </columns>
+    <columns>
+        <field>LASTMODIFIEDDATE</field>
+    </columns>
+    <description>How many custom reports have not been run in the last 90 days? These are reports that might no longer be needed and can be cleaned up.</description>
+    <filter>
+        <criteriaItems>
+            <column>LASTRUNDATE</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>lessThan</operator>
+            <value>LAST_90_DAYS</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>LASTMODIFIED</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Month</dateGranularity>
+        <field>LASTRUNDATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name># Custom Reports Not Run Last 90 Days</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>ReportList</reportType>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>LASTMODIFIEDDATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

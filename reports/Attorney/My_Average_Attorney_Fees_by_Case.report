@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>litify_pm__Matter__c.litify_pm__Fee_Amount__c:AVG</calculatedFormula>
+        <datatype>currency</datatype>
+        <description>The average of the Attorney Fees for all Matters with this Principal Attorney</description>
+        <developerName>FORMULA1</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Average Attorney Fees</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>FORMULA1</column>
+        </chartSummaries>
+        <chartType>VerticalColumn</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>litify_pm__Matter__c.litify_pm__Case_Type__c</groupingColumn>
+        <location>CHART_BOTTOM</location>
+        <showAxisLabels>false</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <title>My Average Attorney Fees by Case Type</title>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>litify_pm__Matter__c.litify_pm__Display_Name__c</field>
+    </columns>
+    <columns>
+        <field>litify_pm__Matter__c.litify_pm__Client__c</field>
+    </columns>
+    <columns>
+        <field>litify_pm__Matter__c.litify_pm__Status__c</field>
+    </columns>
+    <columns>
+        <field>litify_pm__Matter__c.litify_pm__Close_Date__c</field>
+    </columns>
+    <columns>
+        <field>litify_pm__Matter__c.litify_pm__Total_Matter_Value__c</field>
+    </columns>
+    <description>What is the average amount of Attorney Fees for Matters I own?</description>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>litify_pm__Matter__c.litify_pm__Case_Type__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>My Average Attorney Fees by Case Type</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$litify_pm__Matter__c</reportType>
+    <scope>user</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>litify_pm__Matter__c.litify_pm__Close_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>litify_pm__Intake__c.litify_pm__Total_Calls__c:SUM/litify_pm__Intake__c.litify_pm__Intakes__c:SUM</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Average # Calls per Intake</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <columns>
+        <field>litify_pm__Intake__c$Name</field>
+    </columns>
+    <columns>
+        <field>litify_pm__Intake__c.Activities$TaskSubtype</field>
+    </columns>
+    <columns>
+        <field>litify_pm__Intake__c.Activities$Subject</field>
+    </columns>
+    <columns>
+        <field>litify_pm__Intake__c.Activities$Owner</field>
+    </columns>
+    <description>How many calls are made on Intakes owned by each User?</description>
+    <filter>
+        <criteriaItems>
+            <column>litify_pm__Intake__c.Activities$TaskSubtype</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>call</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>litify_pm__Intake__c$Owner</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Avg Calls per Intake by Owner</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Intakes_with_or_without_Activities__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>litify_pm__Intake__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>
