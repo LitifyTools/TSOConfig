@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Questionnaire Output email template intended for the Client on an Intake</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Send Questionnaire and Responses to Client</name>
+    <style>none</style>
+    <subject>Our Recent Conversation about Your Legal Issue</subject>
+    <textOnly>Dear {!litify_pm__Intake__c.litify_pm__First_Name__c} {!litify_pm__Intake__c.litify_pm__Last_Name__c},
+
+Thank you for speaking with one of our talented legal team members at {!Organization.Name} about your legal issue. Our team is carefully reviewing the information you shared with us. We will contact you soon with any follow-up questions, and to discuss the status of your potential case.
+
+Please find a record of the questions and answers from our conversation below.
+
+Sincerely,
+{!Organization.Name}
+
+Questions and Answers
+
+{!litify_pm__Intake__c.litify_pm__Questions_and_answers__c}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

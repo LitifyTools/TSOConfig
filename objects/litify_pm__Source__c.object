@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>litify_tso_DICE_Queue_Priority__c</fullName>
+        <description>Used to prioritize Intakes with Source Record Type &quot;Attorney Referral&quot; in DICE Queues</description>
+        <externalId>false</externalId>
+        <formula>IF(  litify_tso_Source_Type_Name__c  = &quot;Attorney Referral&quot;, 1, 2)</formula>
+        <label>DICE Queue Priority</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>litify_tso_Source_Type_Name__c</fullName>
+        <description>Text copy of Record Type Name usable for search layouts.</description>
+        <externalId>false</externalId>
+        <label>Source Type Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+</CustomObject>

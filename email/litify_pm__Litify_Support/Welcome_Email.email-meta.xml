@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email welcoming Clients who have signed the Retainer Agreement</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Welcome Email</name>
+    <style>none</style>
+    <subject>Welcome to Our Newest Client</subject>
+    <textOnly>{!Today}
+
+Dear {!litify_pm__Intake__c.litify_pm__First_Name__c}
+ {!litify_pm__Intake__c.litify_pm__Last_Name__c},
+
+Thank you for allowing us at {!Organization.Name} to advocate for you! As our client, we will fight to defend your rights in this legal matter.
+
+Our dedicated team will be in touch shortly to let you know the very next steps, as well as what to expect throughout the course of your case. Please feel free to contact our office if you have any questions at any time.
+
+Best,
+{!Organization.Name}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

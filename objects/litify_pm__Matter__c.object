@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <fields>
+        <fullName>litify_tso_My_Matter__c</fullName>
+        <description>Set to True if the Logged in User is the same as the Matter Owner or the Principal Attorney. Additional user lookups can be added as needed.</description>
+        <externalId>false</externalId>
+        <formula>IF(OwnerId = $User.Id
+||
+litify_pm__Principal_Attorney__r.Id = $User.Id, True, False)</formula>
+        <inlineHelpText>Set to True if the Logged in User is the same as the Matter Owner or the Principal Attorney. Additional user lookups can be added as needed.</inlineHelpText>
+        <label>My Matter</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <listViews>
+        <fullName>Matters_10_Months_Not_Yet_In_Litigation</fullName>
+        <columns>litify_pm__lit_Display_Name_Link__c</columns>
+        <columns>litify_pm__Client__c</columns>
+        <columns>litify_pm__Case_Type__c</columns>
+        <columns>litify_pm__Principal_Attorney__c</columns>
+        <columns>litify_pm__Open_Date__c</columns>
+        <columns>litify_pm__Pending_Date__c</columns>
+        <columns>litify_pm__Moved_to_Litigation__c</columns>
+        <columns>litify_pm__Statute_Of_Limitations__c</columns>
+        <columns>litify_pm__Close_Date__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>litify_pm__Moved_to_Litigation__c</field>
+            <operation>equals</operation>
+        </filters>
+        <filters>
+            <field>litify_pm__Open_Date__c</field>
+            <operation>lessThan</operation>
+            <value>LAST_N_MONTHS:10</value>
+        </filters>
+        <label>Matters 10+Months Not Yet In Litigation</label>
+    </listViews>
+    <listViews>
+        <fullName>My_Matters_Upcoming_SOL_Date</fullName>
+        <columns>litify_pm__lit_Display_Name_Link__c</columns>
+        <columns>litify_pm__Client__c</columns>
+        <columns>litify_pm__Case_Type__c</columns>
+        <columns>litify_pm__Open_Date__c</columns>
+        <columns>litify_pm__Statute_Of_Limitations__c</columns>
+        <columns>litify_pm__Principal_Attorney__c</columns>
+        <columns>litify_pm__Close_Date__c</columns>
+        <columns>litify_pm__Total_Matter_Value__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>litify_pm__Status__c</field>
+            <operation>equals</operation>
+            <value>Open</value>
+        </filters>
+        <filters>
+            <field>litify_pm__Statute_Of_Limitations__c</field>
+            <operation>greaterOrEqual</operation>
+            <value>TODAY</value>
+        </filters>
+        <filters>
+            <field>litify_pm__Statute_Of_Limitations__c</field>
+            <operation>lessOrEqual</operation>
+            <value>NEXT_90_DAYS</value>
+        </filters>
+        <label>My Matters - Upcoming SOL Date</label>
+    </listViews>
+    <listViews>
+        <fullName>New_Moved_to_Litigation</fullName>
+        <columns>litify_pm__lit_Display_Name_Link__c</columns>
+        <columns>litify_pm__Client__c</columns>
+        <columns>litify_pm__Case_Type__c</columns>
+        <columns>litify_pm__Principal_Attorney__c</columns>
+        <columns>litify_pm__Open_Date__c</columns>
+        <columns>litify_pm__Pending_Date__c</columns>
+        <columns>litify_pm__Statute_Of_Limitations__c</columns>
+        <columns>litify_pm__Close_Date__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>litify_pm__Moved_to_Litigation__c</field>
+            <operation>greaterOrEqual</operation>
+            <value>LAST_N_DAYS:14</value>
+        </filters>
+        <label>New Moved to Litigation</label>
+    </listViews>
+    <listViews>
+        <fullName>Open_Matters_Upcoming_SOL_Date</fullName>
+        <columns>litify_pm__lit_Display_Name_Link__c</columns>
+        <columns>litify_pm__Client__c</columns>
+        <columns>litify_pm__Case_Type__c</columns>
+        <columns>litify_pm__Open_Date__c</columns>
+        <columns>litify_pm__Statute_Of_Limitations__c</columns>
+        <columns>litify_pm__Principal_Attorney__c</columns>
+        <columns>litify_pm__Close_Date__c</columns>
+        <columns>litify_pm__Total_Matter_Value__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>litify_pm__Status__c</field>
+            <operation>equals</operation>
+            <value>Open</value>
+        </filters>
+        <filters>
+            <field>litify_pm__Statute_Of_Limitations__c</field>
+            <operation>greaterOrEqual</operation>
+            <value>TODAY</value>
+        </filters>
+        <filters>
+            <field>litify_pm__Statute_Of_Limitations__c</field>
+            <operation>lessOrEqual</operation>
+            <value>NEXT_90_DAYS</value>
+        </filters>
+        <label>Open Matters - Upcoming SOL Date</label>
+    </listViews>
+    <listViews>
+        <fullName>Pending_Matters</fullName>
+        <columns>litify_pm__lit_Display_Name_Link__c</columns>
+        <columns>litify_pm__Client__c</columns>
+        <columns>litify_pm__Case_Type__c</columns>
+        <columns>litify_pm__Principal_Attorney__c</columns>
+        <columns>litify_pm__Open_Date__c</columns>
+        <columns>litify_pm__Pending_Date__c</columns>
+        <columns>litify_pm__Statute_Of_Limitations__c</columns>
+        <columns>litify_pm__Close_Date__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>litify_pm__Status__c</field>
+            <operation>equals</operation>
+            <value>Pending</value>
+        </filters>
+        <label>Pending Matters</label>
+    </listViews>
+    <listViews>
+        <fullName>Turned_Down_Matters</fullName>
+        <columns>litify_pm__lit_Display_Name_Link__c</columns>
+        <columns>litify_pm__Client__c</columns>
+        <columns>litify_pm__Case_Type__c</columns>
+        <columns>litify_pm__Open_Date__c</columns>
+        <columns>litify_pm__Lost_Reason__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>litify_pm__Lost_Reason__c</field>
+            <operation>notEqual</operation>
+        </filters>
+        <label>Lost Matters</label>
+    </listViews>
+</CustomObject>

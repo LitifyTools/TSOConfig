@@ -1,0 +1,5 @@
+<p style="text-align: center;">{!Today}</p>
+<p>Dear {!litify_pm__Intake__c.litify_pm__First_Name__c} {!litify_pm__Intake__c.litify_pm__Last_Name__c},</p>
+<p style="padding-left: 30px;">Thank you for allowing us at {!Organization.Name} to advocate for you! As our client, we will fight to defend your rights in this legal matter.</p>
+<p style="padding-left: 30px;">Our dedicated team will be in touch shortly to let you know the very next steps, as well as what to expect throughout the course of your case. Please feel free to contact our office if you have any questions at any time.</p>
+<p style="text-align: right;">Best,<br /> {!Organization.Name}</p>

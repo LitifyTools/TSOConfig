@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dashboard xmlns="http://soap.sforce.com/2006/04/metadata">
+    <backgroundEndColor>#FFFFFF</backgroundEndColor>
+    <backgroundFadeDirection>Diagonal</backgroundFadeDirection>
+    <backgroundStartColor>#FFFFFF</backgroundStartColor>
+    <dashboardGridLayout>
+        <dashboardGridComponents>
+            <colSpan>5</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <axisBinding>y</axisBinding>
+                    <column>RowCount</column>
+                </chartSummary>
+                <componentType>Donut</componentType>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>true</expandOthers>
+                <groupingColumn>litify_pm__Intake__c.litify_pm__Case_Type__c</groupingColumn>
+                <groupingSortProperties/>
+                <header>Intakes Created (Past 7 Days)</header>
+                <legendPosition>Right</legendPosition>
+                <report>litify_pm__Litify_Intakes/Intakes_Case_Types1</report>
+                <showPercentage>false</showPercentage>
+                <showTotal>false</showTotal>
+                <showValues>true</showValues>
+                <sortBy>RowValueDescending</sortBy>
+                <title>By Case Type</title>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>0</rowIndex>
+            <rowSpan>6</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>5</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+                <componentType>Table</componentType>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <groupingSortProperties/>
+                <header>Intakes Converted (Past 7 Days)</header>
+                <indicatorHighColor>#00716B</indicatorHighColor>
+                <indicatorLowColor>#C23934</indicatorLowColor>
+                <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
+                <report>litify_pm__Litify_Intakes/New_Intakes_by_Quarter_Past_2_Years11</report>
+                <showPicturesOnTables>false</showPicturesOnTables>
+                <sortBy>RowValueDescending</sortBy>
+                <title>By Case Type</title>
+            </dashboardComponent>
+            <rowIndex>0</rowIndex>
+            <rowSpan>4</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>5</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+                <componentType>Table</componentType>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <groupingSortProperties/>
+                <header>Intakes Retainers Signed (Past 7 Days)</header>
+                <report>litify_pm__Litify_Intakes/New_Intakes_by_Quarter_Past_2_Years112</report>
+                <showPicturesOnTables>false</showPicturesOnTables>
+                <sortBy>RowValueDescending</sortBy>
+            </dashboardComponent>
+            <rowIndex>4</rowIndex>
+            <rowSpan>4</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>5</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+                <componentType>Table</componentType>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <groupingSortProperties/>
+                <header>Intakes Updated (Past 7 Days)</header>
+                <indicatorHighColor>#00716B</indicatorHighColor>
+                <indicatorLowColor>#C23934</indicatorLowColor>
+                <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
+                <report>Intake_Management/Intake_Funnel11111</report>
+                <showPicturesOnTables>false</showPicturesOnTables>
+                <sortBy>RowValueDescending</sortBy>
+                <title>By Status</title>
+            </dashboardComponent>
+            <rowIndex>6</rowIndex>
+            <rowSpan>6</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>5</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+                <componentType>Table</componentType>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <groupingSortProperties/>
+                <header>Intake Turn Down Reasons (Past 7 Days)</header>
+                <indicatorHighColor>#00716B</indicatorHighColor>
+                <indicatorLowColor>#C23934</indicatorLowColor>
+                <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
+                <maxValuesDisplayed>1</maxValuesDisplayed>
+                <report>litify_pm__Litify_Intakes/New_Intakes_by_Quarter_Past_2_Years111</report>
+                <showPicturesOnTables>false</showPicturesOnTables>
+                <sortBy>RowValueDescending</sortBy>
+            </dashboardComponent>
+            <rowIndex>8</rowIndex>
+            <rowSpan>4</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>9</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+                <componentType>Table</componentType>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <groupingSortProperties/>
+                <header>Calls on Intakes (Past 7 Days)</header>
+                <report>Intake_Management/Calls_on_Intakes_Today</report>
+                <showPicturesOnTables>false</showPicturesOnTables>
+                <sortBy>RowValueDescending</sortBy>
+            </dashboardComponent>
+            <rowIndex>12</rowIndex>
+            <rowSpan>5</rowSpan>
+        </dashboardGridComponents>
+        <numberOfColumns>9</numberOfColumns>
+        <rowHeight>80</rowHeight>
+    </dashboardGridLayout>
+    <dashboardType>SpecifiedUser</dashboardType>
+    <description>Numbers on new and updated Intakes over the past 7 days</description>
+    <isGridLayout>true</isGridLayout>
+    <runningUser>exampleuser@litify.com</runningUser>
+    <textColor>#000000</textColor>
+    <title>Recent Intakes</title>
+    <titleColor>#000000</titleColor>
+    <titleSize>12</titleSize>
+</Dashboard>

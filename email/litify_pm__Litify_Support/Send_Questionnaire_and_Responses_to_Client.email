@@ -1,0 +1,6 @@
+<p>Dear {!litify_pm__Intake__c.litify_pm__First_Name__c} {!litify_pm__Intake__c.litify_pm__Last_Name__c},</p>
+<p style="padding-left: 30px;">Thank you for speaking with one of our talented legal team members at&nbsp;{!Organization.Name} about your legal issue. Our team is carefully reviewing the information you shared with us. We will contact you soon with any follow-up questions, and to discuss the status of your potential case.</p>
+<p style="padding-left: 30px;">Please find a record of the questions and answers from our conversation below.</p>
+<p style="text-align: right;">Sincerely,<br /> {!Organization.Name}</p>
+<p><strong>Questions and Answers</strong></p>
+<p>{!litify_pm__Intake__c.litify_pm__Questions_and_answers__c}</p>

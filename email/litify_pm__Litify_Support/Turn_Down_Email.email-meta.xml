@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email Turning Down Potential Clients</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Turn Down Email</name>
+    <style>none</style>
+    <subject>Regarding Your Legal Matter</subject>
+    <textOnly>{!Today}
+
+Dear {!litify_pm__Intake__c.litify_pm__First_Name__c}{!litify_pm__Intake__c.litify_pm__Last_Name__c},
+
+We appreciate you reaching out to {!Organization.Name} regarding your interest in pursuing legal action. Unfortunately, we are unable to represent you in this matter.
+
+We encourage you to reach out to another law firm as soon as possible if you would like another opinion regarding your claim.
+
+Our office takes your interests seriously and reviews all cases with care. Please contact us again if you need legal representation in another matter.
+
+Best,
+{!Organization.Name}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

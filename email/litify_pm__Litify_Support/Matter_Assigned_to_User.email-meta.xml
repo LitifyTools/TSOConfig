@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Alerts recipient that they have been assigned as the Owner of a Matter record</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Litify_Letterhead</letterhead>
+    <name>Matter Assigned to User</name>
+    <style>freeForm</style>
+    <subject>Litify Notification: Assigned as Matter Owner</subject>
+    <textOnly>Hello {!litify_pm__Matter__c.OwnerFullName}, you have been set as the Owner of a Matter in Litify. Please find details of the Matter below.
+
+Details about the Matter are below
+
+Name: {!litify_pm__Matter__c.litify_pm__Display_Name__c}
+
+Matter Number: {!litify_pm__Matter__c.Name}
+
+Link to Matter: {!litify_pm__Matter__c.Link}
+
+Client: {!litify_pm__Matter__c.litify_pm__Client__c}
+
+Case Type: {!litify_pm__Matter__c.litify_pm__Case_Type__c}
+
+Open Date: {!litify_pm__Matter__c.litify_pm__Open_Date__c}
+
+Matter Stage: {!litify_pm__Matter__c.litify_pm__Matter_Stage_Activity__c}
+
+Matter Created by: {!litify_pm__Matter__c.CreatedBy}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

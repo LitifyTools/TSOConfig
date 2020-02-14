@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_Email_Notification</name>
+        <label>Send Email Notification</label>
+        <locationX>541</locationX>
+        <locationY>443</locationY>
+        <actionName>SendEmail</actionName>
+        <actionType>apex</actionType>
+        <inputParameters>
+            <name>ContactOrLeadID</name>
+            <value>
+                <elementReference>svar_ThisUser.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>EmailTemplateId</name>
+            <value>
+                <elementReference>svar_EmailTemplate.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>ToAddresses</name>
+            <value>
+                <elementReference>var_EmailAddresses</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>RelatedToId</name>
+            <value>
+                <elementReference>var_MatterID</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <assignments>
+        <description>Collect the details about users including Email and other data as needed.</description>
+        <name>Capture_User_Details</name>
+        <label>Capture User Details</label>
+        <locationX>556</locationX>
+        <locationY>226</locationY>
+        <assignmentItems>
+            <assignToReference>col_EmailAddresses</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>svar_ThisUser.Email</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_EmailAddresses</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>svar_ThisUser.Email</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_EmailAddresses</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>,</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Matter_Team_Member_Loop</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>Check if an email template was found. If no template is found, end, otherwise continue to send email action.</description>
+        <name>Email_Template_Found</name>
+        <label>Email Template Found</label>
+        <locationX>327</locationX>
+        <locationY>445</locationY>
+        <defaultConnectorLabel>No Template Found</defaultConnectorLabel>
+        <rules>
+            <name>Template_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>svar_EmailTemplate</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Email_Notification</targetReference>
+            </connector>
+            <label>Template Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check to see if this email is unique.</description>
+        <name>Unique_Email</name>
+        <label>Unique Email</label>
+        <locationX>803</locationX>
+        <locationY>227</locationY>
+        <defaultConnector>
+            <targetReference>Matter_Team_Member_Loop</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Add_Email</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>for_NewEmail</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Capture_User_Details</targetReference>
+            </connector>
+            <label>Add Email</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check to see if there is a User ID before looking one up.</description>
+        <name>User_Found</name>
+        <label>User Found?</label>
+        <locationX>576</locationX>
+        <locationY>46</locationY>
+        <defaultConnector>
+            <targetReference>Matter_Team_Member_Loop</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Role Not Assigned</defaultConnectorLabel>
+        <rules>
+            <name>User_ID_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>svar_ThisMatterTeamMember.litify_pm__User__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>User_Lookup</targetReference>
+            </connector>
+            <label>User ID Found</label>
+        </rules>
+    </decisions>
+    <description>Lookup all Matter Team Members and add them to an Email Notification. This is triggered from a Process Builder action.</description>
+    <formulas>
+        <description>Check to see if this user is a new user based on the Email Address.</description>
+        <name>for_NewEmail</name>
+        <dataType>Boolean</dataType>
+        <expression>IF(CONTAINS({!col_EmailAddresses}, {!svar_ThisUser.Email}), False, True)</expression>
+    </formulas>
+    <interviewLabel>Matter Team Lookup {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Matter Team Notification</label>
+    <loops>
+        <description>Loop through all found Team Member records to collect data about the User.</description>
+        <name>Matter_Team_Member_Loop</name>
+        <label>Matter Team Member Loop</label>
+        <locationX>335</locationX>
+        <locationY>50</locationY>
+        <assignNextValueToReference>svar_ThisMatterTeamMember</assignNextValueToReference>
+        <collectionReference>Lookup_all_Matter_Team_Members</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>User_Found</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Get_Email_Template_to_Send</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Lookup the Email Template to use. This lookup is by the Developer Name of the Template.</description>
+        <name>Get_Email_Template_to_Send</name>
+        <label>Get Email Template to Send</label>
+        <locationX>335</locationX>
+        <locationY>261</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Email_Template_Found</targetReference>
+        </connector>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>var_EmailTemplateDeveloperName</elementReference>
+            </value>
+        </filters>
+        <object>EmailTemplate</object>
+        <outputReference>svar_EmailTemplate</outputReference>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Body</queriedFields>
+        <queriedFields>Subject</queriedFields>
+    </recordLookups>
+    <recordLookups>
+        <description>Find all Matter Team Members that are associated with this Matter.</description>
+        <name>Lookup_all_Matter_Team_Members</name>
+        <label>Lookup all Matter Team Members</label>
+        <locationX>181</locationX>
+        <locationY>50</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Matter_Team_Member_Loop</targetReference>
+        </connector>
+        <filters>
+            <field>litify_pm__Matter__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>var_MatterID</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>litify_pm__Matter_Team_Member__c</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>litify_pm__User__c</queriedFields>
+        <queriedFields>litify_pm__Role__c</queriedFields>
+        <sortField>litify_pm__Role__c</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Lookup the User associated with this Matter Team Member</description>
+        <name>User_Lookup</name>
+        <label>User Lookup</label>
+        <locationX>811</locationX>
+        <locationY>45</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Unique_Email</targetReference>
+        </connector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>svar_ThisMatterTeamMember.litify_pm__User__c</elementReference>
+            </value>
+        </filters>
+        <object>User</object>
+        <outputReference>svar_ThisUser</outputReference>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Email</queriedFields>
+    </recordLookups>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Lookup_all_Matter_Team_Members</targetReference>
+        </connector>
+    </start>
+    <status>Obsolete</status>
+    <variables>
+        <name>col_EmailAddresses</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>svar_EmailTemplate</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>EmailTemplate</objectType>
+    </variables>
+    <variables>
+        <name>svar_ThisMatterTeamMember</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>litify_pm__Matter_Team_Member__c</objectType>
+    </variables>
+    <variables>
+        <name>svar_ThisUser</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>User</objectType>
+    </variables>
+    <variables>
+        <name>var_EmailAddresses</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>The API Name of the Email Template</description>
+        <name>var_EmailTemplateDeveloperName</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>var_MatterID</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

@@ -1,0 +1,5 @@
+<p>Dear {!litify_pm__Intake__c.litify_pm__First_Name__c}{!litify_pm__Intake__c.litify_pm__Last_Name__c},</p>
+<p style="padding-left: 30px;">We appreciate you reaching out to {!Organization.Name} regarding your interest in pursuing legal action. Unfortunately, we are unable to represent you in this matter.</p>
+<p style="padding-left: 30px;">We encourage you to reach out to another law firm as soon as possible if you would like another opinion regarding your claim.</p>
+<p style="padding-left: 30px;">Our office takes your interests seriously and reviews all cases with care. Please contact us again if you need legal representation in another matter.</p>
+<p style="text-align: right;">Best,<br /> {!Organization.Name}</p>

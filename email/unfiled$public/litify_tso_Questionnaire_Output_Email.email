@@ -1,0 +1,7 @@
+Intake Name: {!litify_pm__Intake__c.Name}
+Display Name: {!litify_pm__Intake__c.litify_pm__Display_Name__c}
+Client: {!litify_pm__Intake__c.litify_pm__Client__c}:
+Link to Intake: {!litify_pm__Intake__c.Link}
+
+Questionnaire Output:
+{!litify_pm__Intake__c.litify_pm__Questions_and_answers__c}

@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <fields>
+        <fullName>Total_Converted_Leads__c</fullName>
+        <externalId>false</externalId>
+        <formula>If(NOT(ISBLANK( litify_pm__Converted_Date__c ))=True,1,null)</formula>
+        <label># Converted</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Questionnaires__c</fullName>
+        <externalId>false</externalId>
+        <formula>If(NOT(ISBLANK( litify_pm__Questionnaire_End_Date__c ))=True,1,null)</formula>
+        <label># Questionnaires</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Retainer_Sent__c</fullName>
+        <externalId>false</externalId>
+        <formula>If(NOT(ISBLANK(litify_pm__Retainer_Agreement_Sent_Date__c))=True,1,null)</formula>
+        <label># Retainer Sent</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Under_Review__c</fullName>
+        <externalId>false</externalId>
+        <formula>If(NOT(ISBLANK(litify_pm__Under_Review_Date__c))=True,1,null)</formula>
+        <label># Under Review</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>litify_tso_My_Intake__c</fullName>
+        <description>Set to True if the Logged in User is the same as the Intake Owner. Additional user lookups can be added as needed.</description>
+        <externalId>false</externalId>
+        <formula>IF(OwnerId = $User.Id, True, False)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Set to True if the Logged in User is the same as the Intake Owner. Additional user lookups can be added as needed.</inlineHelpText>
+        <label>My Intake</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>litify_tso_Questionnaire_Recipient__c</fullName>
+        <description>Specify the recipient who will receive the intake email.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Who will receive this intake email?</inlineHelpText>
+        <label>Questionnaire Recipient</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>litify_tso_Questionnaire_Subject__c</fullName>
+        <description>The subject of the intake email to be sent out.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>What should the subject line of the questionnaire email be?</inlineHelpText>
+        <label>Questionnaire Subject</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <listViews>
+        <fullName>All_Intakes_By_Age</fullName>
+        <columns>litify_pm__lit_Display_Name_Link__c</columns>
+        <columns>litify_pm__Client__c</columns>
+        <columns>litify_pm__Case_Type__c</columns>
+        <columns>litify_pm__Open_Date__c</columns>
+        <columns>litify_pm__age_in_days__c</columns>
+        <columns>litify_pm__Source__c</columns>
+        <columns>litify_pm__Incident_Date__c</columns>
+        <columns>litify_pm__Statute_of_Limitations_Date__c</columns>
+        <columns>litify_pm__Status__c</columns>
+        <columns>litify_pm__Case_Quality__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>OWNER.LAST_NAME</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>litify_pm__Intake__c.litify_pm__Active_Intake</value>
+        </filters>
+        <label>All Intakes - By Age</label>
+    </listViews>
+    <listViews>
+        <fullName>All_Intakes_This_Week</fullName>
+        <columns>litify_pm__lit_Display_Name_Link__c</columns>
+        <columns>litify_pm__Client__c</columns>
+        <columns>litify_pm__Case_Type__c</columns>
+        <columns>litify_pm__Open_Date__c</columns>
+        <columns>litify_pm__Incident_Date__c</columns>
+        <columns>litify_pm__Statute_of_Limitations_Date__c</columns>
+        <columns>litify_pm__Status__c</columns>
+        <columns>litify_pm__Case_Quality__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>litify_pm__Intake__c.litify_pm__Active_Intake</value>
+        </filters>
+        <filters>
+            <field>CREATED_DATE</field>
+            <operation>greaterOrEqual</operation>
+            <value>LAST_N_DAYS:7</value>
+        </filters>
+        <label>All Intakes - This Week</label>
+    </listViews>
+    <listViews>
+        <fullName>My_Intakes</fullName>
+        <columns>litify_pm__lit_Display_Name_Link__c</columns>
+        <columns>litify_pm__Client__c</columns>
+        <columns>litify_pm__Case_Type__c</columns>
+        <columns>litify_pm__Open_Date__c</columns>
+        <columns>litify_pm__Incident_Date__c</columns>
+        <columns>litify_pm__Statute_of_Limitations_Date__c</columns>
+        <columns>litify_pm__Status__c</columns>
+        <columns>litify_pm__Case_Quality__c</columns>
+        <filterScope>Mine</filterScope>
+        <label>My Intakes</label>
+    </listViews>
+    <listViews>
+        <fullName>New_Intakes_ThisWeek</fullName>
+        <columns>litify_pm__lit_Display_Name_Link__c</columns>
+        <columns>litify_pm__Client__c</columns>
+        <columns>litify_pm__Case_Type__c</columns>
+        <columns>litify_pm__Open_Date__c</columns>
+        <columns>litify_pm__Incident_Date__c</columns>
+        <columns>litify_pm__Statute_of_Limitations_Date__c</columns>
+        <columns>litify_pm__Status__c</columns>
+        <columns>litify_pm__Case_Quality__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>litify_pm__Intake__c.litify_pm__Active_Intake</value>
+        </filters>
+        <filters>
+            <field>CREATED_DATE</field>
+            <operation>greaterOrEqual</operation>
+            <value>LAST_N_DAYS:7</value>
+        </filters>
+        <label>New Active Intakes - This Week</label>
+    </listViews>
+    <listViews>
+        <fullName>Open_Intakes_Not_Yet_Contacted</fullName>
+        <columns>litify_pm__lit_Display_Name_Link__c</columns>
+        <columns>litify_pm__Client__c</columns>
+        <columns>litify_pm__Case_Type__c</columns>
+        <columns>litify_pm__Open_Date__c</columns>
+        <columns>litify_pm__Total_Calls__c</columns>
+        <columns>litify_pm__Total_Emails__c</columns>
+        <columns>litify_pm__Incident_Date__c</columns>
+        <columns>litify_pm__Statute_of_Limitations_Date__c</columns>
+        <columns>litify_pm__Status__c</columns>
+        <columns>litify_pm__Case_Quality__c</columns>
+        <columns>litify_pm__Source__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>litify_pm__Status__c</field>
+            <operation>equals</operation>
+            <value>Open</value>
+        </filters>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>litify_pm__Intake__c.litify_pm__Active_Intake</value>
+        </filters>
+        <filters>
+            <field>litify_pm__Total_Calls__c</field>
+            <operation>lessThan</operation>
+            <value>1</value>
+        </filters>
+        <label>Open Intakes - Not Yet Contacted</label>
+    </listViews>
+    <listViews>
+        <fullName>Open_Working_Intakes_By_Age</fullName>
+        <columns>litify_pm__lit_Display_Name_Link__c</columns>
+        <columns>litify_pm__Client__c</columns>
+        <columns>litify_pm__Case_Type__c</columns>
+        <columns>litify_pm__Open_Date__c</columns>
+        <columns>litify_pm__age_in_days__c</columns>
+        <columns>litify_pm__Source__c</columns>
+        <columns>litify_pm__Incident_Date__c</columns>
+        <columns>litify_pm__Statute_of_Limitations_Date__c</columns>
+        <columns>litify_pm__Status__c</columns>
+        <columns>litify_pm__Case_Quality__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>litify_pm__Intake__c.litify_pm__Active_Intake</value>
+        </filters>
+        <filters>
+            <field>litify_pm__Status__c</field>
+            <operation>equals</operation>
+            <value>Open,Working,Under Review</value>
+        </filters>
+        <label>Open, Working Intakes - By Age</label>
+    </listViews>
+    <listViews>
+        <fullName>Under_Review_Intakes</fullName>
+        <columns>litify_pm__lit_Display_Name_Link__c</columns>
+        <columns>litify_pm__Client__c</columns>
+        <columns>litify_pm__Case_Type__c</columns>
+        <columns>litify_pm__Open_Date__c</columns>
+        <columns>litify_pm__Under_Review_Date__c</columns>
+        <columns>litify_pm__Incident_Date__c</columns>
+        <columns>litify_pm__Statute_of_Limitations_Date__c</columns>
+        <columns>litify_pm__Status__c</columns>
+        <columns>litify_pm__Case_Quality__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>litify_pm__Status__c</field>
+            <operation>equals</operation>
+            <value>Under Review</value>
+        </filters>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>litify_pm__Intake__c.litify_pm__Active_Intake</value>
+        </filters>
+        <label>Under Review Intakes</label>
+    </listViews>
+</CustomObject>

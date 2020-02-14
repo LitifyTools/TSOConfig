@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Sent upon new User creation as System Admin</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Litify_Letterhead</letterhead>
+    <name>New Trialforce Welcome/What to Expect</name>
+    <style>freeForm</style>
+    <subject>Welcome to Litify — What&apos;s Next?</subject>
+    <textOnly>Dear {!User.FirstName} {!User.LastName},
+
+Welcome to Litify — we&apos;re glad to have you.
+
+Thank you for signing up to see how Litify can transform your practice into a more successful business.
+
+Follow this guide to finish the remaining steps to set up your Litify trial: https://success.litify.com/s/article/New-Litify-Trialforce-Org-Setup-Guide
+
+If you need help, please contact Litify Customer Support at support@litify.com or submit a request online at https://www.litify.com/success/
+
+— The Litify Team</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

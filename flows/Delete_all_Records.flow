@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <decisions>
+        <description>Check if there are Insurance Records found. If none, continue to the next step to avoid any errors.</description>
+        <name>Insurance_Records_Found</name>
+        <label>Insurance Records Found?</label>
+        <locationX>535</locationX>
+        <locationY>421</locationY>
+        <defaultConnector>
+            <targetReference>Find_all_Note_records</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Skip</defaultConnectorLabel>
+        <rules>
+            <name>Delete_Insurance_Records</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Find_all_Insurance_records</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Delete_Insurance_Records_Step</targetReference>
+            </connector>
+            <label>Delete Insurance Records</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if there are Intake Records found. If none, continue to the next step to avoid any errors.</description>
+        <name>Intake_Records_Found</name>
+        <label>Intake Records Found?</label>
+        <locationX>702</locationX>
+        <locationY>258</locationY>
+        <defaultConnector>
+            <targetReference>Find_all_Party_records</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Skip</defaultConnectorLabel>
+        <rules>
+            <name>Delete_Intake_Records</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>scol_AllIntakes</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Delete_Intake_Records_Step</targetReference>
+            </connector>
+            <label>Delete Intake Records</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if there are Negotiation Records found. If none, continue to the next step to avoid any errors.</description>
+        <name>Matter_Negotiation_Found</name>
+        <label>Matter Negotiation Found?</label>
+        <locationX>1210</locationX>
+        <locationY>416</locationY>
+        <defaultConnector>
+            <targetReference>Find_all_Request_records</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Skip</defaultConnectorLabel>
+        <rules>
+            <name>Delete_Negotiation_Records</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Find_all_Negotiation_Records</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Delete_Negotiation_Records_Step</targetReference>
+            </connector>
+            <label>Delete Negotiation Records</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if there are Matter Records found. If none, continue to the next step to avoid any errors.</description>
+        <name>Matter_Records_Found</name>
+        <label>Matter Records Found?</label>
+        <locationX>430</locationX>
+        <locationY>52</locationY>
+        <defaultConnector>
+            <targetReference>Find_all_Intake_Records</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Skip</defaultConnectorLabel>
+        <rules>
+            <name>Delete_Matter_Records</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>scol_AllMatters</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Delete_Matter_Records_Step</targetReference>
+            </connector>
+            <label>Delete Matter Records</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if there are Note Records found. If none, continue to the next step to avoid any errors.</description>
+        <name>Note_Records_Found</name>
+        <label>Note Records Found?</label>
+        <locationX>205</locationX>
+        <locationY>422</locationY>
+        <defaultConnector>
+            <targetReference>Find_all_Question_Answer_records</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Skip</defaultConnectorLabel>
+        <rules>
+            <name>Delete_Note_Records</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Find_all_Note_records</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Delete_Note_Records_Step</targetReference>
+            </connector>
+            <label>Delete Note Records</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if there are Party Records found. If none, continue to the next step to avoid any errors.</description>
+        <name>Party_Records_Found</name>
+        <label>Party Records Found?</label>
+        <locationX>984</locationX>
+        <locationY>48</locationY>
+        <defaultConnector>
+            <targetReference>Find_all_Negotiation_Records</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Skip</defaultConnectorLabel>
+        <rules>
+            <name>Delete_Party_Records</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>scol_AllParties</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Delete_Party_Records_Step</targetReference>
+            </connector>
+            <label>Delete Party Records</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if there are Question Answer Records found. If none, continue to the next step to avoid any errors.</description>
+        <name>Question_Answer_Records_Found</name>
+        <label>Question Answer Records Found?</label>
+        <locationX>64</locationX>
+        <locationY>807</locationY>
+        <defaultConnector>
+            <targetReference>Find_all_Questionnaire_Output_records</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Skip</defaultConnectorLabel>
+        <rules>
+            <name>Delete_Question_Answer_Records</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Find_all_Question_Answer_records</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Delete_Question_Answer_Records_Step</targetReference>
+            </connector>
+            <label>Delete Question Answer Records</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if there are Questionnaire Output Records found. If none, continue to the next step to avoid any errors.</description>
+        <name>Questionnaire_Output_Records_Found</name>
+        <label>Questionnaire Output Records Found?</label>
+        <locationX>368</locationX>
+        <locationY>1028</locationY>
+        <defaultConnector>
+            <targetReference>Find_all_Task_records</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Skip</defaultConnectorLabel>
+        <rules>
+            <name>Delete_Questionnaire_Output_Records</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Find_all_Questionnaire_Output_records</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Delete_Questionnaire_Output_Records_Step</targetReference>
+            </connector>
+            <label>Delete Questionnaire Output Records</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if there are Request Records found. If none, continue to the next step to avoid any errors.</description>
+        <name>Request_Records_Found</name>
+        <label>Request Records Found?</label>
+        <locationX>864</locationX>
+        <locationY>418</locationY>
+        <defaultConnector>
+            <targetReference>Find_all_Insurance_records</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Skip</defaultConnectorLabel>
+        <rules>
+            <name>Delete_Request_Records</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Find_all_Request_records</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Delete_Request_Records_Step</targetReference>
+            </connector>
+            <label>Delete Request Records</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if there are Task Records found. If none, continue to the next step to avoid any errors.</description>
+        <name>Task_Records_Found</name>
+        <label>Task Records Found?</label>
+        <locationX>708</locationX>
+        <locationY>1027</locationY>
+        <defaultConnector>
+            <targetReference>Completed</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Skip</defaultConnectorLabel>
+        <rules>
+            <name>Delete_Task_Records</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>scol_AllTasks</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Delete_Task_Records_Step</targetReference>
+            </connector>
+            <label>Delete Task Records</label>
+        </rules>
+    </decisions>
+    <description>This will delete all Party, Intake, Matter, and all child records. This is to be used only when ready to go live and load production data. This action is not reversible.</description>
+    <interviewLabel>Delete all Records {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Delete all Records</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordDeletes>
+        <description>Delete all Insurance Records.</description>
+        <name>Delete_Insurance_Records_Step</name>
+        <label>Delete Insurance Records</label>
+        <locationX>543</locationX>
+        <locationY>631</locationY>
+        <connector>
+            <targetReference>Find_all_Note_records</targetReference>
+        </connector>
+        <inputReference>Find_all_Insurance_records</inputReference>
+    </recordDeletes>
+    <recordDeletes>
+        <description>Delete all found Intake Records</description>
+        <name>Delete_Intake_Records_Step</name>
+        <label>Delete Intake Records</label>
+        <locationX>709</locationX>
+        <locationY>46</locationY>
+        <connector>
+            <targetReference>Find_all_Party_records</targetReference>
+        </connector>
+        <inputReference>scol_AllIntakes</inputReference>
+    </recordDeletes>
+    <recordDeletes>
+        <description>Delete all found Matter records</description>
+        <name>Delete_Matter_Records_Step</name>
+        <label>Delete Matter Records</label>
+        <locationX>437</locationX>
+        <locationY>256</locationY>
+        <connector>
+            <targetReference>Find_all_Intake_Records</targetReference>
+        </connector>
+        <inputReference>scol_AllMatters</inputReference>
+    </recordDeletes>
+    <recordDeletes>
+        <description>Delete all found Negotiation records</description>
+        <name>Delete_Negotiation_Records_Step</name>
+        <label>Delete Negotiation Records</label>
+        <locationX>1217</locationX>
+        <locationY>622</locationY>
+        <connector>
+            <targetReference>Find_all_Request_records</targetReference>
+        </connector>
+        <inputReference>Find_all_Negotiation_Records</inputReference>
+    </recordDeletes>
+    <recordDeletes>
+        <description>Delete all Note Records.</description>
+        <name>Delete_Note_Records_Step</name>
+        <label>Delete Note Records</label>
+        <locationX>213</locationX>
+        <locationY>628</locationY>
+        <connector>
+            <targetReference>Find_all_Question_Answer_records</targetReference>
+        </connector>
+        <inputReference>Find_all_Note_records</inputReference>
+    </recordDeletes>
+    <recordDeletes>
+        <description>Delete all Party Records.</description>
+        <name>Delete_Party_Records_Step</name>
+        <label>Delete Party Records</label>
+        <locationX>990</locationX>
+        <locationY>255</locationY>
+        <connector>
+            <targetReference>Find_all_Negotiation_Records</targetReference>
+        </connector>
+        <inputReference>scol_AllParties</inputReference>
+    </recordDeletes>
+    <recordDeletes>
+        <description>Delete all Task Records.</description>
+        <name>Delete_Question_Answer_Records_Step</name>
+        <label>Delete Question Answer Records</label>
+        <locationX>71</locationX>
+        <locationY>1026</locationY>
+        <connector>
+            <targetReference>Find_all_Questionnaire_Output_records</targetReference>
+        </connector>
+        <inputReference>Find_all_Question_Answer_records</inputReference>
+    </recordDeletes>
+    <recordDeletes>
+        <description>Delete all Questionnaire Output Records.</description>
+        <name>Delete_Questionnaire_Output_Records_Step</name>
+        <label>Delete Questionnaire Output Records</label>
+        <locationX>376</locationX>
+        <locationY>816</locationY>
+        <connector>
+            <targetReference>Find_all_Task_records</targetReference>
+        </connector>
+        <inputReference>Find_all_Questionnaire_Output_records</inputReference>
+    </recordDeletes>
+    <recordDeletes>
+        <description>Delete all Request Records.</description>
+        <name>Delete_Request_Records_Step</name>
+        <label>Delete Request Records</label>
+        <locationX>872</locationX>
+        <locationY>628</locationY>
+        <connector>
+            <targetReference>Find_all_Insurance_records</targetReference>
+        </connector>
+        <inputReference>Find_all_Request_records</inputReference>
+    </recordDeletes>
+    <recordDeletes>
+        <description>Delete all Task Records.</description>
+        <name>Delete_Task_Records_Step</name>
+        <label>Delete Task Records</label>
+        <locationX>716</locationX>
+        <locationY>821</locationY>
+        <connector>
+            <targetReference>Completed</targetReference>
+        </connector>
+        <inputReference>scol_AllTasks</inputReference>
+    </recordDeletes>
+    <recordLookups>
+        <description>This will lookup ALL Insurance records and store the IDs.</description>
+        <name>Find_all_Insurance_records</name>
+        <label>Find all Insurance records</label>
+        <locationX>687</locationX>
+        <locationY>419</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Insurance_Records_Found</targetReference>
+        </connector>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>litify_pm__Insurance__c</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>This will lookup ALL Intake records and store the IDs.</description>
+        <name>Find_all_Intake_Records</name>
+        <label>Find all Intake Records</label>
+        <locationX>574</locationX>
+        <locationY>256</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Intake_Records_Found</targetReference>
+        </connector>
+        <object>litify_pm__Intake__c</object>
+        <outputReference>scol_AllIntakes</outputReference>
+        <queriedFields>Id</queriedFields>
+    </recordLookups>
+    <recordLookups>
+        <description>This will lookup ALL Matter records and store the IDs.</description>
+        <name>Find_all_Matter_Records</name>
+        <label>Find all Matter Records</label>
+        <locationX>306</locationX>
+        <locationY>50</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Matter_Records_Found</targetReference>
+        </connector>
+        <object>litify_pm__Matter__c</object>
+        <outputReference>scol_AllMatters</outputReference>
+        <queriedFields>Id</queriedFields>
+    </recordLookups>
+    <recordLookups>
+        <description>This will lookup ALL Negotiation records and store the IDs.</description>
+        <name>Find_all_Negotiation_Records</name>
+        <label>Find all Negotiation Records</label>
+        <locationX>1218</locationX>
+        <locationY>255</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Matter_Negotiation_Found</targetReference>
+        </connector>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>litify_pm__Negotiation__c</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>This will lookup ALL Note records and store the IDs.</description>
+        <name>Find_all_Note_records</name>
+        <label>Find all Note records</label>
+        <locationX>353</locationX>
+        <locationY>420</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Note_Records_Found</targetReference>
+        </connector>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>litify_pm__lit_Note__c</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>This will lookup ALL Party records and store the IDs.</description>
+        <name>Find_all_Party_records</name>
+        <label>Find all Party records</label>
+        <locationX>854</locationX>
+        <locationY>46</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Party_Records_Found</targetReference>
+        </connector>
+        <object>Account</object>
+        <outputReference>scol_AllParties</outputReference>
+        <queriedFields>Id</queriedFields>
+    </recordLookups>
+    <recordLookups>
+        <description>This will lookup ALL Question Answer records and store the IDs.</description>
+        <name>Find_all_Question_Answer_records</name>
+        <label>Find all Question Answer records</label>
+        <locationX>72</locationX>
+        <locationY>628</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Question_Answer_Records_Found</targetReference>
+        </connector>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>litify_pm__Question_Answer__c</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>This will lookup ALL Questionnaire Output records and store the IDs.</description>
+        <name>Find_all_Questionnaire_Output_records</name>
+        <label>Find all Questionnaire Output records</label>
+        <locationX>218</locationX>
+        <locationY>1026</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Questionnaire_Output_Records_Found</targetReference>
+        </connector>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>litify_pm__Questionnaire_Output__c</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>This will lookup ALL Request records and store the IDs.</description>
+        <name>Find_all_Request_records</name>
+        <label>Find all Request records</label>
+        <locationX>1035</locationX>
+        <locationY>416</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Request_Records_Found</targetReference>
+        </connector>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>litify_pm__Request__c</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>This will lookup ALL Task records and store the IDs.</description>
+        <name>Find_all_Task_records</name>
+        <label>Find all Task records</label>
+        <locationX>563</locationX>
+        <locationY>1025</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Task_Records_Found</targetReference>
+        </connector>
+        <object>Task</object>
+        <outputReference>scol_AllTasks</outputReference>
+        <queriedFields>Id</queriedFields>
+    </recordLookups>
+    <screens>
+        <name>Completed</name>
+        <label>Completed</label>
+        <locationX>890</locationX>
+        <locationY>917</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>Completed_Message</name>
+            <fieldText>&lt;p&gt;&lt;b style=&quot;background-color: rgb(255, 255, 255); color: rgb(62, 62, 60);&quot;&gt;All records have been deleted.&lt;/b&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(62, 62, 60);&quot;&gt; You can exit this flow.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Confirmation_Screen</name>
+        <label>Confirmation Screen</label>
+        <locationX>166</locationX>
+        <locationY>50</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Find_all_Matter_Records</targetReference>
+        </connector>
+        <fields>
+            <name>Confrimation</name>
+            <fieldText>&lt;p&gt;Are you sure you want to delete all records  Party, Intake, and Matter records along with all child records? &lt;b style=&quot;color: rgb(255, 0, 0);&quot;&gt;This action can not be undone. &lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;This should only be used once the initial configuration has been completed and prior to live data being loaded into the system. &lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Confirmation_Step</name>
+            <dataType>String</dataType>
+            <fieldText>Type out DELETE in the below box to delete all records.</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+            <validationRule>
+                <errorMessage>&lt;p&gt;You must type out the word &quot;&lt;b&gt;&lt;i&gt;DELETE&lt;/i&gt;&lt;/b&gt;&quot; in order to proceed. &lt;/p&gt;</errorMessage>
+                <formulaExpression>CONTAINS({!Confirmation_Step}, &quot;Delete&quot;) 
+||
+CONTAINS({!Confirmation_Step}, &quot;delete&quot;)
+||
+CONTAINS({!Confirmation_Step}, &quot;DELETE&quot;)</formulaExpression>
+            </validationRule>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Confirmation_Screen</targetReference>
+        </connector>
+    </start>
+    <status>Draft</status>
+    <variables>
+        <name>scol_AllIntakes</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>litify_pm__Intake__c</objectType>
+    </variables>
+    <variables>
+        <name>scol_AllMatters</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>litify_pm__Matter__c</objectType>
+    </variables>
+    <variables>
+        <name>scol_AllParties</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Account</objectType>
+    </variables>
+    <variables>
+        <name>scol_AllTasks</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Task</objectType>
+    </variables>
+</Flow>

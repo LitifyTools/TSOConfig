@@ -1,0 +1,16 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><div style="font-size: 12pt;"><div>Hello&nbsp;{!litify_pm__Matter__c.OwnerFullName}, you have been set as the Owner of a Matter in Litify.</div>
+<h3>Details about the Matter are below</h3>
+<hr>
+<div>&nbsp;</div>
+<p style="padding-left: 30px;"><strong>Name</strong>: {!litify_pm__Matter__c.litify_pm__Display_Name__c}</p>
+<p style="padding-left: 30px;"><strong>Matter Number</strong>:&nbsp;{!litify_pm__Matter__c.Name}</p>
+<p style="padding-left: 30px;"><strong>Client</strong>: {!litify_pm__Matter__c.litify_pm__Client__c}</p>
+<p style="padding-left: 30px;"><strong>Case Type</strong>: {!litify_pm__Matter__c.litify_pm__Case_Type__c}</p>
+<p style="padding-left: 30px;"><strong>Open Date</strong>: {!litify_pm__Matter__c.litify_pm__Open_Date__c}</p>
+<p style="padding-left: 30px;"><strong>Matter Stage</strong>:&nbsp;{!litify_pm__Matter__c.litify_pm__Matter_Stage_Activity__c}</p>
+<p style="padding-left: 30px;"><strong>Matter Created by</strong>:&nbsp;{!litify_pm__Matter__c.CreatedBy}</p><p style="padding-left: 30px;"><strong><br></strong></p><p style="padding-left: 30px;"><strong>Link to Matter</strong>: <a href="{!litify_pm__Matter__c.Link}">{!litify_pm__Matter__c.Link}</a></p></div></div>]]></td>
+</tr>
+</table>

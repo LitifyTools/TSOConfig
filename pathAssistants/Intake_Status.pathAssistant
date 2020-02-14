@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>litify_pm__Intake__c</entityName>
+    <fieldName>litify_pm__Status__c</fieldName>
+    <masterLabel>Intake Status</masterLabel>
+    <recordTypeName>Active_Intake</recordTypeName>
+</PathAssistant>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomHelpMenuSection xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customHelpMenuItems>
+        <linkUrl>https://success.litify.com/s/article/Litify-Guide-Introduction</linkUrl>
+        <masterLabel>Litify User Guides</masterLabel>
+        <sortOrder>1</sortOrder>
+    </customHelpMenuItems>
+    <masterLabel>Litify</masterLabel>
+</CustomHelpMenuSection>
