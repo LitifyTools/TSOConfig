@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>litify_pm__Negotiation__c.litify_pm__Type__c</field>
+    </columns>
+    <columns>
+        <field>FK_$litify_pm__Matter__c.litify_pm__Display_Name__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>litify_pm__Negotiation__c.litify_pm__Amount__c</field>
+    </columns>
+    <columns>
+        <field>litify_pm__Negotiation__c.litify_pm__Negotiating_with_Name__c</field>
+    </columns>
+    <description>All Negotiations created this month grouped by Principal Attorney</description>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FK_$litify_pm__Matter__c.litify_pm__Principal_Attorney__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Demands Sent by Attorney MTD</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$litify_pm__Negotiation__c@litify_pm__Negotiation__c.litify_pm__Matter__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>litify_pm__Negotiation__c.litify_pm__Date__c</dateColumn>
+        <interval>INTERVAL_THISMONTH</interval>
+    </timeFrameFilter>
+</Report>
